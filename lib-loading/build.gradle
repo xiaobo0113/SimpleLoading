@@ -42,7 +42,7 @@ publishing {
         }
     }
     repositories {
-        maven { url 'E://xiaobo/maven/' }
+        maven { url 'D://xiaobo/maven/' }
     }
 }
 
