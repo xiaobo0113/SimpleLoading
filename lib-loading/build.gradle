@@ -29,13 +29,21 @@ android {
     }
 }
 
+// 打包源码 jar
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier = 'sources'
+}
+
 // 搜索 maven-publish 查看详情
 apply plugin: 'maven-publish'
 // 执行该 task 即可: gradlew publish
 publishing {
     publications {
         maven(MavenPublication) {
-            artifact file("build/outputs/aar/lib-loading-debug.aar")
+            artifact(sourcesJar)
+            artifact("$buildDir/outputs/aar/lib-loading-debug.aar")
+
             groupId "top.gangshanghua.xiaobo"
             artifactId "simple-loading"
             version "1.0.0"
